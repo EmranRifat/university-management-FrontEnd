@@ -5,16 +5,16 @@ import UMBreadCrumb from "./UMBreadCrumb";
 const { Content } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
+ 
   const base = "admin";
+ 
   return (
     <Content
-      style={{
-        minHeight: "100vh",
-        color: "black",
-      }}
-    >
+      style={{ minHeight: "100vh",color: "black"}} >
+     
       <UMBreadCrumb
-        items={[
+      
+       items={[
           {
             label: `${base}`,
             link: `/${base}`,

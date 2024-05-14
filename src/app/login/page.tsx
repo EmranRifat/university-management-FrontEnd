@@ -6,28 +6,34 @@ import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import LoginForm from "@/components/Forms/LoginForm";
 
-type FormValues = {
-  id: string;
-  password: string;
-};
-
-const LoginPage = () => {
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    try {
-      console.log(data);
-    } catch (err) {}
+  type FormValues = {
+    id: string;
+    password: string;
   };
+
+  const LoginPage = () => {
+    
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+      try {
+        console.log(data);
+      } catch (err) {}
+    };
+
   return (
+    
     <Row
       justify="center"
       align="middle"
       style={{
-        minHeight: "100vh",
-      }}
-    >
+      minHeight: "100vh",
+      
+    }}
+     >
+
       <Col sm={12} md={16} lg={10}>
         <Image src={loginImage} width={500} alt="login image" />
       </Col>
+
       <Col sm={12} md={8} lg={8}>
         <h1
           style={{
@@ -38,22 +44,24 @@ const LoginPage = () => {
         </h1>
         <div>
         
-      <LoginForm submitHandler={onSubmit}>
+        <LoginForm submitHandler={onSubmit}>
             <div>
               <FormInput name="id" type="text" size="large" label="User Id" />
             </div>
+          
             <div
               style={{
                 margin: "15px 0px",
               }}
             >
               <FormInput
-                name="password"
+                name="password"   
                 type="password"
                 size="large"
                 label="User Password"
               />
             </div>
+
             <Button type="primary" htmlType="submit">
               Login
             </Button>

@@ -3,14 +3,17 @@
 import { ReactElement, ReactNode } from "react";
 import { useForm, FormProvider, SubmitHandler } from "react-hook-form";
 
+
 type FormConfig = {
   defaultValues?: Record<string, any>;
 };
+
 
 type FormProps = {
   children?: ReactElement | ReactNode;
   submitHandler: SubmitHandler<any>;
 } & FormConfig;
+
 
 const Form = ({ children, submitHandler, defaultValues }: FormProps) => {
   const formConfig: FormConfig = {};
@@ -25,6 +28,7 @@ const Form = ({ children, submitHandler, defaultValues }: FormProps) => {
     submitHandler(data);
     reset();
   };
+
 
   return (
     <FormProvider {...methods}>

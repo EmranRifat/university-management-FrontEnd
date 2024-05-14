@@ -11,7 +11,6 @@ import {
 import Link from "next/link";
 import { USER_ROLE } from "./role";
 
-
 export const sidebarItems = (role: string) => {
   
  
@@ -47,7 +46,9 @@ export const sidebarItems = (role: string) => {
     },
   ];
 
+  
   const adminSidebarItems: MenuProps["items"] = [
+    
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
     {
@@ -196,6 +197,7 @@ export const sidebarItems = (role: string) => {
       key: `/${role}/academic-report`,
     },
   ];
+
 
   if (role === USER_ROLE.SUPER_ADMIN) return superAdminSidebarItems;
   else if (role === USER_ROLE.ADMIN) return adminSidebarItems;
