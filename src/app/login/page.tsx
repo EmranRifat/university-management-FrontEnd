@@ -5,8 +5,9 @@ import Image from "next/image";
 import FormInput from "@/components/Forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
 import LoginForm from "@/components/Forms/LoginForm";
-import { useUserLoginMutation } from "@/redux/api/authapi";
-import { storeUserInfo } from "@/services/auth.service";
+import { getUserInfo, loggedIn, storeUserInfo } from "@/services/auth.service";
+import { useUserLoginMutation } from "@/redux/api/authApi";
+import { useRouter } from "next/navigation";
 
   type FormValues = {
     id: string;
@@ -15,16 +16,26 @@ import { storeUserInfo } from "@/services/auth.service";
 
   const LoginPage = () => {
     const [userLogin]=useUserLoginMutation();
-
+    const router=useRouter();
+    
+    console.log("decodedData",getUserInfo())
+    console.log(loggedIn())
+  
     const onSubmit: SubmitHandler<FormValues> = async(data : any) => {
       try {
-       const res=await userLogin({...data}).unwrap();
+       const res= await userLogin({...data}).unwrap();
+        if( res?.data?.accessToken){
+          router.push("/profile");
+        }
+
+
+
 
        storeUserInfo({accessToken: res?.data?.accessToken})
-
-
        console.log(res)
+
       } 
+
       catch (err:any) {
         console.log(err.message)
       }
