@@ -7,7 +7,7 @@ import { SubmitHandler } from "react-hook-form";
 import LoginForm from "@/components/Forms/LoginForm";
 import { getUserInfo, loggedIn, storeUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
-import { useUserLoginMutation } from "@/redux/api/authapi";
+import { useUserLoginMutation } from "@/redux/api/authApi";
 
   type FormValues = {
     id: string;
@@ -27,12 +27,12 @@ import { useUserLoginMutation } from "@/redux/api/authapi";
 
        console.log(res);
 
-        if( res?.accessToken){
+      if( res?.accessToken){
           router.push("/profile");
-        }
+      }
 
        storeUserInfo({accessToken: res?.accessToken})
-       console.log(res)
+       console.log("ress-->>",res)
 
       } 
 
